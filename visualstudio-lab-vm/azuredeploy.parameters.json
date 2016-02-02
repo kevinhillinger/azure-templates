@@ -8,6 +8,9 @@
     "adminPassword": {
       "value": "demo@pass1"
     },
+	"location": {
+      "value": "West US"
+    },
     "dnsLabelPrefix": {
       "value": "GEN-UNIQUE"
     }

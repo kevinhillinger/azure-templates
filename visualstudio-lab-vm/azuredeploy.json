@@ -18,7 +18,6 @@
     },
     "location": {
       "type": "string",
-      "defaultValue": "West US",
       "metadata": {
         "description": "The location of where the Virtual Machine will be provisioned."
       }
