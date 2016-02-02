@@ -16,9 +16,16 @@
         "description": "Password for the Virtual Machine."
       }
     },
+    "location": {
+      "type": "string",
+      "defaultValue": "West US",
+      "metadata": {
+        "description": "The location of where the Virtual Machine will be provisioned."
+      }
+    },
     "dnsLabelPrefix": {
       "type": "string",
-      "defaultValue": "labrg",
+      "defaultValue": "labvm",
       "metadata": {
         "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
       }
@@ -27,7 +34,6 @@
   "variables": {
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'labvm')]",
     "sizeOfDiskInGB": "100",
-    "location": "[resourceGroup().location]",
     "imagePublisher": "MicrosoftVisualStudio",
     "imageSku": "VS-2013-Comm-VSU5-AzureSDK-2.8-WS2012R2",
     "imageOffer": "VisualStudio",
@@ -35,6 +41,7 @@
     "addressPrefix": "10.0.0.0/16",
     "subnetName": "Subnet",
     "subnetPrefix": "10.0.0.0/24",
+    "subnetNsg": "labvmNSG",
     "storageAccountType": "Standard_LRS",
     "publicIPAddressName": "labvmPublicIP",
     "publicIPAddressType": "Dynamic",
@@ -51,7 +58,7 @@
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[variables('storageAccountName')]",
       "apiVersion": "[variables('apiVersion')]",
-      "location": "[variables('location')]",
+      "location": "[parameters('location')]",
       "properties": {
         "accountType": "[variables('storageAccountType')]"
       }
@@ -60,7 +67,7 @@
       "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Network/publicIPAddresses",
       "name": "[variables('publicIPAddressName')]",
-      "location": "[variables('location')]",
+      "location": "[parameters('location')]",
       "properties": {
         "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
         "dnsSettings": {
@@ -69,10 +76,37 @@
       }
     },
     {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[variables('subnetNsg')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "rdp_rule",
+            "properties": {
+              "description": "Allow RDP",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "3389",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
       "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[variables('virtualNetworkName')]",
-      "location": "[variables('location')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/networkSecurityGroups/', variables('subnetNsg'))]"
+      ],
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
@@ -83,7 +117,10 @@
           {
             "name": "[variables('subnetName')]",
             "properties": {
-              "addressPrefix": "[variables('subnetPrefix')]"
+              "addressPrefix": "[variables('subnetPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('subnetNsg'))]"
+              }
             }
           }
         ]
@@ -93,7 +130,7 @@
       "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Network/networkInterfaces",
       "name": "[variables('nicName')]",
-      "location": "[variables('location')]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
         "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
@@ -119,7 +156,7 @@
       "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[variables('vmName')]",
-      "location": "[variables('location')]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
         "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
