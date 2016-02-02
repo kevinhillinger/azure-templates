@@ -29,7 +29,7 @@
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'labvm')]",
     "sizeOfDiskInGB": "100",
     "imagePublisher": "MicrosoftVisualStudio",
-    "imageSku": "VS-2015-Comm-VSU1-AzureSDK-2.8-WS2012R2.1",
+    "imageSku": "VS-2015-Comm-VSU1-AzureSDK-2.8-WS2012R2",
     "imageOffer": "VisualStudio",
     "nicName": "labvmNic",
     "addressPrefix": "10.0.0.0/16",
