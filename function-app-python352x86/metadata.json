@@ -1,0 +1,7 @@
+{
+  "itemDisplayName": "Create Azure Function App with Python 3.5.2 x86 extension",
+  "description": "Creates an Azure Function App with Python 3.5.2 x86extension, Template and Python Extension originally authored by Kevin Hillinger of Microsoft",
+  "summary": "This template creates an Azure Function App with a Python extension, to execute Python scripts in Azure. Template originally authored by Kevin Hillingere of Microsoft",
+  "githubUsername": "kevinhillinger",
+  "dateUpdated": "2017-01-30"
+}
