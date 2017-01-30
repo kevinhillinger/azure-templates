@@ -1,4 +1,4 @@
-# Create a web app on Azure with GoLang extension
+# Create a Function App for Python
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fkevinhillinger%2Fazure-templates%2Fmaster%2Ffunction-app-python352x86%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
