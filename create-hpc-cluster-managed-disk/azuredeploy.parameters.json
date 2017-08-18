@@ -8,6 +8,9 @@
     "privateDomainName": {
       "value": "hpc.local"
     },
+   "storageAccountType": {
+      "value": "SSD"
+    },
     "headNodeVMSize": {
       "value": "Standard_DS4_v2"
     },

@@ -168,9 +168,6 @@
           },
           "osDisk": {
             "name": "osdisk",
-            "vhd": {
-              "uri": "[variables('osDiskUri')]"
-            },
             "caching": "ReadOnly",
             "createOption": "FromImage"
           }

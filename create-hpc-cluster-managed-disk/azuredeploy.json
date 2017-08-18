@@ -100,6 +100,17 @@
         "description": "The number of the compute nodes"
       }
     },
+   "storageAccountType": {
+      "type": "string",
+      "defaultValue": "SSD",
+      "allowedValues": [
+         "SSD",
+         "HDD"
+      ],
+      "metadata": {
+        "description": "The backing storage for disks"
+      }
+   },
     "computeNodeVMSize": {
       "type": "string",
       "defaultValue": "Standard_DS3_v2",
@@ -199,7 +210,7 @@
   "variables": {
     "virtualNetworkName": "[concat(parameters('clusterName'), 'VNet')]",
     "storageAccountNamePrefix": "[toLower(concat('hpc', uniqueString(resourceGroup().id, toLower(parameters('clusterName')))))]",
-    "storageAccountType": "Standard_LRS",
+    "storageAccountType": "[if(equals(parameters('storageAccountType'),'SSD'), 'Premium_LRS', 'Standard_LRS')]",
     "publicIPAddressName": "[concat(parameters('clusterName'), '-PublicIP-HN')]",
     "computeNodeImageOsPlatform": "Windows",
     "computeNodeImages": {
