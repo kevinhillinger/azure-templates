@@ -46,6 +46,7 @@
         "Standard_D13_v2",
         "Standard_D14_v2",
         "Standard_D15_v2",
+        "Standard_DS4_v2",
         "Standard_F4",
         "Standard_F8",
         "Standard_F16",
@@ -66,7 +67,6 @@
         "Standard_NC12",
         "Standard_NC24",
         "Standard_NC24r",
-        "Standard_DS4_v2"
       ],
       "metadata": {
         "description": "The VM size of the head node. Note that some VM sizes in the list are only available in some particular locations. Please check the availability and the price of the VM sizes at https://azure.microsoft.com/en-us/pricing/details/virtual-machines before deployment."

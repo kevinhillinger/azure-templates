@@ -112,9 +112,6 @@
       }    
     }
   },
-  "variables":{
-    "osDiskUri": "[concat('http://',parameters('storageAccountName'),'.blob.core.windows.net/vhds/', toLower(parameters('vmName')), '-os', uniqueString(parameters('subnetId')), '.vhd')]"
-  },
   "resources": [
     {
       "apiVersion": "[parameters('apiVersion')]",
@@ -141,6 +138,7 @@
       "name": "[parameters('vmName')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
         "[concat('Microsoft.Network/networkInterfaces/', parameters('nicName'))]"
       ],
       "properties": {
@@ -165,9 +163,6 @@
           },
           "osDisk": {
             "name": "osdisk",
-            "vhd": {
-              "uri": "[variables('osDiskUri')]"
-            },
             "caching": "ReadOnly",
             "createOption": "FromImage"
           }
