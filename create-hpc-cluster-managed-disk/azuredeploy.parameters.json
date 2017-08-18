@@ -21,7 +21,7 @@
       "value": 2
     },
     "computeNodeVMSize": {
-      "value": "Standard_D3_v2"
+      "value": "Standard_DS3_v2"
     },
     "adminUsername": {
       "value": "azureuser"
