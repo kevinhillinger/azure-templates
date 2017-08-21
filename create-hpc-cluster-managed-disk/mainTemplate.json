@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.24.0.0",
+  "contentVersion": "1.25.0.0",
   "parameters": {
     "clusterName": {
       "type": "string",
@@ -265,7 +265,7 @@
         "mode": "Incremental",
         "templateLink": {
           "uri": "[concat(parameters('artifactsBaseUrl'), '/publicip-', parameters('publicIPNewOrExisting'), '.json')]",
-          "contentVersion": "1.24.0.0"
+          "contentVersion": "1.25.0.0"
         },
         "parameters": {
           "apiVersion": {
@@ -321,7 +321,7 @@
         "mode": "Incremental",
         "templateLink": {
           "uri": "[concat(parameters('artifactsBaseUrl'), '/availabilitySets.json')]",
-          "contentVersion": "1.24.0.0"
+          "contentVersion": "1.25.0.0"
         },
         "parameters": {
           "apiVersion": {
@@ -349,7 +349,7 @@
         "mode": "Incremental",
         "templateLink": {
           "uri": "[concat(parameters('artifactsBaseUrl'), '/headnode-rdma-', variables('hnRDMAState'), '.json')]",
-          "contentVersion": "1.24.0.0"
+          "contentVersion": "1.25.0.0"
         },
         "parameters": {
           "apiVersion": {
@@ -396,7 +396,7 @@
         "mode": "Incremental",
         "templateLink": {
           "uri": "[concat(parameters('artifactsBaseUrl'),'/vnet-with-dns-server.json')]",
-          "contentVersion": "1.24.0.0"
+          "contentVersion": "1.25.0.0"
         },
         "parameters": {
           "apiVersion": {
@@ -480,7 +480,7 @@
         "mode": "Incremental",
         "templateLink": {
           "uri": "[variables('computeNodeTemplateUrl')]",
-          "contentVersion": "1.24.0.0"
+          "contentVersion": "1.25.0.0"
         },
         "parameters": {
           "apiVersion": {
