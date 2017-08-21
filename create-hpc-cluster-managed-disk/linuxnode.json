@@ -136,7 +136,7 @@
       }
     },
     {
-      "apiVersion": "[parameters('apiVersion')]",
+      "apiVersion": "2016-04-30-preview",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('vmName')]",
       "location": "[resourceGroup().location]",
@@ -169,7 +169,10 @@
           "osDisk": {
             "name": "osdisk",
             "caching": "ReadOnly",
-            "createOption": "FromImage"
+            "createOption": "FromImage",
+            "managedDisk": {
+               "storageAccountType": "Premium_LRS"
+            }
           }
         },
         "networkProfile": {

@@ -133,7 +133,7 @@
       }
     },
     {
-      "apiVersion": "[parameters('apiVersion')]",
+      "apiVersion": "2016-04-30-preview",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('vmName')]",
       "location": "[resourceGroup().location]",
