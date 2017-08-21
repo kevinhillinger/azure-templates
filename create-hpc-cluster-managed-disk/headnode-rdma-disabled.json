@@ -64,11 +64,29 @@
     }
   },
   "resources": [
+     {
+      "type": "Microsoft.Compute/disks",
+      "name": "[concat(parameters('vmName'),'-datadisk0')]",
+      "apiVersion": "2017-03-30",
+      "location": "[resourceGroup().location]",
+      "sku": {
+         "name": "[parameters('storageAccountType')]"
+      },
+      "properties": {
+         "creationData": {
+               "createOption": "Empty"
+         },
+         "diskSizeGB": 200
+      }
+    },
     {
       "apiVersion": "2016-04-30-preview",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('vmName')]",
       "location": "[resourceGroup().location]",
+      "dependsOn": [
+         "[resourceId('Microsoft.Compute/disks/', concat(parameters('vmName'),'-datadisk0'))]"
+      ],
       "properties": {
         "hardwareProfile": {
           "vmSize": "[parameters('vmSize')]"
@@ -100,7 +118,6 @@
               "createOption": "attach",
               "lun": 0,
               "managedDisk": {
-                 "storageAccountType": "[parameters('storageAccountType')]",
                  "id": "[resourceId('Microsoft.Compute/disks/', concat(parameters('vmName'),'-datadisk0'))]"
               }
             }
