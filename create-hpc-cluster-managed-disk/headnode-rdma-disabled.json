@@ -113,7 +113,6 @@
           },
           "dataDisks": [
             {
-              "name": "dataDisk0",
               "caching": "None",
               "createOption": "attach",
               "lun": 0,
