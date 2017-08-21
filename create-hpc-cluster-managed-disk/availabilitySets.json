@@ -31,6 +31,10 @@
       "sku":{
          "name": "Aligned"
       },
+      "properties": {     
+         "platformUpdateDomainCount": 5,     
+         "platformFaultDomainCount": 3     
+      },
       "copy": {
         "name": "hpcAvsets",
         "count": "[parameters('availabilitySetNumber')]"
