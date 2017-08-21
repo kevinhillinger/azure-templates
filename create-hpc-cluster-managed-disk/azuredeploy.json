@@ -227,7 +227,7 @@
       }
     },
     "currentComputeNodeImage": "[variables('computeNodeImages')[parameters('computeNodeImage')]]",
-    "artifactsBaseUrl": "https://raw.githubusercontent.com/kevinhillinger/azure-templates/tree/master/create-hpc-cluster-managed-disk"
+    "artifactsBaseUrl": "https://raw.githubusercontent.com/kevinhillinger/azure-templates/master/create-hpc-cluster-managed-disk"
   },
   "resources": [
     {
