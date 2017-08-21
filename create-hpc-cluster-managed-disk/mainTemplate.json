@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2017-03-30/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "clusterName": {
@@ -175,7 +175,7 @@
     }
   },
   "variables": {
-    "apiVersion": "2017-03-30",
+    "apiVersion": "2015-01-01",
     "cnStorageAccountNumber": "[add(div(sub(parameters('computeNodeNumber'), 1), parameters('nbrCNPerStorageAccount')), 1)]",
     "cnStorageAccountStartIndex": "[add(parameters('storageAccountStartIndex'), 1)]",
     "storageAccountIndexWidth": "[length(string(sub(add(variables('cnStorageAccountNumber'), variables('cnStorageAccountStartIndex')), 1)))]",
@@ -260,7 +260,7 @@
     {
       "name": "setupClusterPublicIP",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-03-30",
+      "apiVersion": "2015-01-01",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -314,7 +314,7 @@
       }
     },
     {
-      "apiVersion": "2017-03-30",
+      "apiVersion": "2015-01-01",
       "type": "Microsoft.Resources/deployments",
       "name": "createAvailabilitySets",
       "properties": {
@@ -337,7 +337,7 @@
       }
     },
     {
-      "apiVersion": "2017-03-30",
+      "apiVersion": "2015-01-01",
       "type": "Microsoft.Resources/deployments",
       "name": "createHeadNode",
       "dependsOn": [
@@ -386,7 +386,7 @@
       }
     },
     {
-      "apiVersion": "2017-03-30",
+      "apiVersion": "2015-01-01",
       "type": "Microsoft.Resources/deployments",
       "name": "updateVNetDNS",
       "dependsOn": [
@@ -464,7 +464,7 @@
       }
     },
     {
-      "apiVersion": "2017-03-30",
+      "apiVersion": "2015-01-01",
       "type": "Microsoft.Resources/deployments",
       "name": "[concat('create', parameters('computeNodeNamePrefix'), padLeft(string(copyIndex()), 3, '0'))]",
       "dependsOn": [
