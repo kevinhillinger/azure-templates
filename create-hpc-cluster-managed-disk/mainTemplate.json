@@ -362,7 +362,7 @@
             "value": "[parameters('headNodeVMSize')]"
           },
           "storageAccountType": {
-            "value": "[variables('storageAccountType')]"
+            "value": "[parameters('storageAccountType')]"
           },
           "nicName": {
             "value": "[variables('nicNameHN')]"
