@@ -100,7 +100,8 @@
               "createOption": "attach",
               "lun": 0,
               "managedDisk": {
-                 "storageAccountType": "[parameters('storageAccountType')]"
+                 "storageAccountType": "[parameters('storageAccountType')]",
+                 "id": "[resourceId('Microsoft.Compute/disks/', concat(parameters('vmName'),'-datadisk0'))]"
               }
             }
           ]
