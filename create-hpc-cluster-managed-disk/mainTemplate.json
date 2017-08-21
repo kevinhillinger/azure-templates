@@ -498,8 +498,8 @@
           "vmSize": {
             "value": "[parameters('computeNodeVMSize')]"
           },
-          "storageAccountName": {
-            "value": "[concat(parameters('storageAccountNamePrefix'), padLeft(string(add(div(copyIndex(), parameters('nbrCNPerStorageAccount')), variables('cnStorageAccountStartIndex'))), variables('storageAccountIndexWidth'), '0'))]"
+          "storageAccountType": {
+            "value": "[parameters('storageAccountType')]"
           },
           "imgPublisher": {
             "value": "[parameters('computeNodeImagePublisher')]"
