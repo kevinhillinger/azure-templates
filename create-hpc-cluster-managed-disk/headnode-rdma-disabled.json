@@ -20,10 +20,10 @@
         "description": "The VM role size"
       }
     },
-    "storageAccountName": {
+    "storageAccountType": {
       "type": "string",
       "metadata": {
-        "description": "The storage account name to store the VHD of the VM"
+        "description": "The storage account type to store the VHD of the VM"
       }
     },
     "nicName": {
@@ -88,15 +88,20 @@
           "osDisk": {
             "name": "osdisk",
             "caching": "ReadOnly",
-            "createOption": "FromImage"
+            "createOption": "FromImage",
+            "managedDisk": {
+                "storageAccountType": "Premium_LRS"
+            }
           },
           "dataDisks": [
             {
-              "name": "datadisk",
+              "name": "dataDisk0",
               "caching": "None",
-              "createOption": "Empty",
-              "diskSizeGB": "200",
-              "lun": 0
+              "createOption": "attach",
+              "lun": 0,
+              "managedDisk": {
+                 "storageAccountType": "Premium_LRS"
+              }
             }
           ]
         },

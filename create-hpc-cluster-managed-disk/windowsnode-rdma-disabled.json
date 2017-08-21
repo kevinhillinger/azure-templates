@@ -163,7 +163,10 @@
           "osDisk": {
             "name": "osdisk",
             "caching": "ReadOnly",
-            "createOption": "FromImage"
+            "createOption": "FromImage",
+            "managedDisk": {
+                  "storageAccountType": "Premium_LRS"
+            }
           }
         },
         "networkProfile": {

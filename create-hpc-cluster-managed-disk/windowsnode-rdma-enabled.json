@@ -132,6 +132,22 @@
         ]
       }
     },
+   {
+      "type": "Microsoft.Compute/disks",
+      "name": "myManagedDataDisk1",
+      "apiVersion": "[variables('computeResouresApiVersion')]",
+      "location": "[variables('location')]",
+      "properties":
+      {
+        "creationData":
+        {
+          "createOption" : "Empty"
+        }
+      ,
+        "accountType" : "[variables('storageAccountType')]",
+        "diskSizeGB": 128
+      }
+    },
     {
       "apiVersion": "[parameters('apiVersion')]",
       "type": "Microsoft.Compute/virtualMachines",
@@ -164,7 +180,10 @@
           "osDisk": {
             "name": "osdisk",
             "caching": "ReadOnly",
-            "createOption": "FromImage"
+            "createOption": "FromImage",
+            "managedDisk": {
+                  "storageAccountType": "Premium_LRS"
+            }
           }
         },
         "networkProfile": {
