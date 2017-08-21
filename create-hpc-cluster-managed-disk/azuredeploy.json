@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
+  "contentVersion": "1.24.0.0",
   "parameters": {
     "clusterName": {
       "type": "string",
@@ -238,7 +238,7 @@
         "mode": "Incremental",
         "templateLink": {
           "uri": "[concat(variables('artifactsBaseUrl'), '/mainTemplate.json')]",
-          "contentVersion": "1.0.0.0"
+          "contentVersion": "1.24.0.0"
         },
         "parameters": {
           "clusterName": {
