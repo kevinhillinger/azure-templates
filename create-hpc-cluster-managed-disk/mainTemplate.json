@@ -361,8 +361,8 @@
           "vmSize": {
             "value": "[parameters('headNodeVMSize')]"
           },
-          "storageAccountName": {
-            "value": "[variables('hnStorageAccountName')]"
+          "storageAccountType": {
+            "value": "[variables('storageAccountType')]"
           },
           "nicName": {
             "value": "[variables('nicNameHN')]"

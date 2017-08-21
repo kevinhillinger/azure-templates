@@ -32,7 +32,7 @@
         "description": "The VM role size"
       }
     },
-    "storageAccountName": {
+    "storageAccountType": {
       "type": "string",
       "metadata": {
         "description": "The storage account name to store the VHD of the VM"
@@ -132,29 +132,12 @@
         ]
       }
     },
-   {
-      "type": "Microsoft.Compute/disks",
-      "name": "myManagedDataDisk1",
-      "apiVersion": "[variables('computeResouresApiVersion')]",
-      "location": "[variables('location')]",
-      "properties":
-      {
-        "creationData":
-        {
-          "createOption" : "Empty"
-        }
-      ,
-        "accountType" : "[variables('storageAccountType')]",
-        "diskSizeGB": 128
-      }
-    },
     {
       "apiVersion": "2016-04-30-preview",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('vmName')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
         "[concat('Microsoft.Network/networkInterfaces/', parameters('nicName'))]"
       ],
       "properties": {
@@ -182,7 +165,7 @@
             "caching": "ReadOnly",
             "createOption": "FromImage",
             "managedDisk": {
-                  "storageAccountType": "Premium_LRS"
+               "storageAccountType": "[parameters('storageAccountType')]"
             }
           }
         },

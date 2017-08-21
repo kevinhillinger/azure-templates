@@ -90,7 +90,7 @@
             "caching": "ReadOnly",
             "createOption": "FromImage",
             "managedDisk": {
-                "storageAccountType": "Premium_LRS"
+                "storageAccountType": "[parameters('storageAccountType')]"
             }
           },
           "dataDisks": [
@@ -100,7 +100,7 @@
               "createOption": "attach",
               "lun": 0,
               "managedDisk": {
-                 "storageAccountType": "Premium_LRS"
+                 "storageAccountType": "[parameters('storageAccountType')]"
               }
             }
           ]

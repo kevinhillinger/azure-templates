@@ -93,7 +93,7 @@
             "caching": "ReadOnly",
             "createOption": "FromImage",
             "managedDisk": {
-                  "storageAccountType": "Premium_LRS"
+                  "storageAccountType": "[parameters('storageAccountType')]"
             }
           },
           "dataDisks": [
@@ -104,7 +104,7 @@
               "diskSizeGB": "200",
               "lun": 0,
               "managedDisk": {
-                  "storageAccountType": "Premium_LRS"
+                  "storageAccountType": "[parameters('storageAccountType')]"
               }
             }
           ]

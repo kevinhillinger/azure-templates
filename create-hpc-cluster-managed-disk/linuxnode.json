@@ -32,7 +32,7 @@
         "description": "The VM role size"
       }
     },
-    "storageAccountName": {
+    "storageAccountType": {
       "type": "string",
       "metadata": {
         "description": "The storage account name to store the VHD of the VM"
@@ -112,9 +112,6 @@
       }    
     }
   },
-  "variables":{
-    "osDiskUri": "[concat('http://',parameters('storageAccountName'),'.blob.core.windows.net/vhds/', toLower(parameters('vmName')), '-os', uniqueString(parameters('subnetId')), '.vhd')]"
-  },
   "resources": [
     {
       "apiVersion": "[parameters('apiVersion')]",
@@ -171,7 +168,7 @@
             "caching": "ReadOnly",
             "createOption": "FromImage",
             "managedDisk": {
-               "storageAccountType": "Premium_LRS"
+               "storageAccountType": "[parameters('storageAccountType')]"
             }
           }
         },
